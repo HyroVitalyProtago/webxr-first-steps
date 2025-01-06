@@ -64,7 +64,7 @@ export async function init(setupScene = () => {}, onFrame = () => {}) {
 	controls.update();
 
 	const canvas = document.createElement('canvas');
-	const context = canvas.getContext("webgl", {
+	const context = canvas.getContext("webgl2", {
 		antialias: true,
 		depth: true,
 		xrCompatible: true
