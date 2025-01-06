@@ -63,7 +63,18 @@ export async function init(setupScene = () => {}, onFrame = () => {}) {
 	controls.target.set(0, 1.6, 0);
 	controls.update();
 
-	const renderer = new THREE.WebGLRenderer({ antialias: true });
+	const canvas = document.createElement('canvas');
+	const context = canvas.getContext("webgl", {
+		antialias: true,
+		depth: true,
+		xrCompatible: true
+	});	  
+
+	const renderer = new THREE.WebGLRenderer({
+		canvas: canvas,
+		context: context,
+		antialias: true
+	});
 	renderer.setPixelRatio(window.devicePixelRatio);
 	renderer.setSize(window.innerWidth, window.innerHeight);
 	renderer.xr.enabled = true;
